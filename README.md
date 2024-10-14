@@ -1,6 +1,6 @@
-# 贪吃蛇
+# 俄罗斯方块
 
-### 技术栈：PureMVC + PIXI + GreenSock + Webpack 5.x + TypeScript
+## 技术栈：PureMVC + PIXI + GreenSock + Webpack 5.x + TypeScript
 
 [PureMVC](https://github.com/PureMVC)
 
@@ -8,7 +8,11 @@
 
 [PIXI](https://pixijs.io/)
 
-[PIXI API](https://pixijs.download/release/docs/index.html)
+[PIXI API Document](https://pixijs.download/release/docs/index.html)
+
+[PIXI-Sound](https://github.com/pixijs/sound)
+
+[PIXI-Sound API Document](https://pixijs.io/sound/docs/index.html)
 
 [GreenSock](https://greensock.com/)
 
