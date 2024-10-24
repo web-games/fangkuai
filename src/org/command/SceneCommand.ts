@@ -63,7 +63,6 @@ export default class SceneCommand extends SimpleCommand implements ICommand {
                 startScene.init();
 
                 PIXI.sound.stopAll();
-
                 PIXI.sound.play("worldscenebgm", {loop: true})
                 break
             case SceneCommand.TO_GAME:
@@ -75,17 +74,15 @@ export default class SceneCommand extends SimpleCommand implements ICommand {
                 this.sendNotification(GameCommand.GAME_START);
 
                 PIXI.sound.stopAll();
-
                 PIXI.sound.play("gamescenebgm", {loop: true})
                 break
             case SceneCommand.TO_END:
-                PIXI.sound.stop("gamescenebgm", {loop: true})
-
-                PIXI.sound.play("worldscenebgm", {loop: true})
-
                 let endScene: EndScene = (this.facade.retrieveMediator(EndSceneMediator.NAME) as EndSceneMediator).endScene;
                 game.stage.addChild(endScene)
                 endScene.init();
+
+                PIXI.sound.stop("gamescenebgm")
+                PIXI.sound.play("worldscenebgm", {loop: true})
                 break
         }
     }
