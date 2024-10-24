@@ -19,7 +19,7 @@ export default class StartScene extends Scene {
 
         var start_btn = new Button('开始');
         start_btn.x = this.stageWidth / 2;
-        start_btn.y = this.stageHeight / 2 + 300;
+        start_btn.y = this.stageHeight / 2;
         start_btn.scale.x = start_btn.scale.y = 0;
         this.addChild(start_btn);
 

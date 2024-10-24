@@ -42,7 +42,7 @@ export default class GameScene extends Scene {
         this.gameContainer.addChild(this.map);
 
         this.rocker = new Rocker();
-        this.rocker.x = 0;
+        this.rocker.x = 40;
         this.rocker.y = this.stageHeight - 100;
         this.addChild(this.rocker);
 

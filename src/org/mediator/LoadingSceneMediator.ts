@@ -38,6 +38,7 @@ export default class LoadSceneMediator extends Mediator implements IMediator {
             'gamescenebgm': './resources/music/gamescenebgm.mp3',
             'drop': './resources/music/drop.mp3',
             'swap': './resources/music/swap.mp3',
+            'click': './resources/music/click.mp3',
         };
         PIXI.sound.add(sounds);
     }

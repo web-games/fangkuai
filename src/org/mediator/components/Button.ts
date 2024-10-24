@@ -11,7 +11,7 @@ type Options = {
 
 export default class Button extends Container {
 
-    constructor(text = '', options: Options = {fontSize: 32, color: 0xffffff, bgColor: 0x79d4f4}) {
+    constructor(text = '', options: Options = {fontSize: 32, color: 0xffffff, bgColor: 0x437df3}) {
         super()
 
         const btn_bg = new Graphics();
@@ -33,9 +33,9 @@ export default class Button extends Container {
         btn_bg.drawRoundedRect(-bg_width / 2, -bg_height / 2, bg_width, bg_height, 8);
         btn_bg.endFill();
 
-        /*this.interactive = true;
+        this.interactive = true;
         this.on('pointerdown', () => {
-            this.emit('click')
-        });*/
+            PIXI.sound.play("click")
+        });
     }
 }

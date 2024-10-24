@@ -51,7 +51,7 @@ export default class ApplicationFacade extends Facade implements IFacade {
             ? windowHeight / windowWidth * stageWidth
             : windowWidth / windowHeight * stageWidth;
 
-        this.game = new Game({
+        globalThis.__PIXI_APP__ = this.game = new Game({
             width: stageWidth,
             height: stageHeight,
             backgroundColor: 0x1099bb

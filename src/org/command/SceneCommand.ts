@@ -64,7 +64,7 @@ export default class SceneCommand extends SimpleCommand implements ICommand {
 
                 PIXI.sound.stopAll();
 
-                PIXI.sound.play("worldscenebgm", {loop: true, fadeIn: 1, fadeOut: 1})
+                PIXI.sound.play("worldscenebgm", {loop: true})
                 break
             case SceneCommand.TO_GAME:
                 let gameProxy = this.facade.retrieveProxy(GameProxy.NAME) as GameProxy
@@ -81,7 +81,7 @@ export default class SceneCommand extends SimpleCommand implements ICommand {
             case SceneCommand.TO_END:
                 PIXI.sound.stop("gamescenebgm", {loop: true})
 
-                PIXI.sound.play("worldscenebgm", {loop: true, fadeIn: 1, fadeOut: 1})
+                PIXI.sound.play("worldscenebgm", {loop: true})
 
                 let endScene: EndScene = (this.facade.retrieveMediator(EndSceneMediator.NAME) as EndSceneMediator).endScene;
                 game.stage.addChild(endScene)

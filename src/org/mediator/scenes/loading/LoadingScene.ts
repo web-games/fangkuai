@@ -34,13 +34,22 @@ export default class LoadingScene extends Scene {
         const bar_radius = 8;
 
         let loading_bg = new Graphics();
-        loading_bg.lineStyle(2, 0xff0000, 1);
+        loading_bg.lineStyle(2, 0xffffff, 1);
         loading_bg.beginFill(0x327bfb, 0);
         loading_bg.drawRoundedRect(0, 0, bar_width, bar_height, bar_radius)
         loading_bg.endFill();
         loading_bar_container.addChild(loading_bg)
 
-        loading_bg.filters = [new PIXI.filters['OutlineFilter'](2, 0x99ff99)];
+        let filter = new PIXI.filters['GlowFilter']({
+            distance: 16, // 光晕距离
+            outerStrength: 2, // 外部强度
+            innerStrength: 0, // 内部强度
+            color: 0xffffff, // 光晕颜色，这里使用红色
+            quality: 0.1, // 光晕质量，范围从 0 到 1
+            knockout: false // 是否仅显示光晕，不显示原图
+        })
+
+        loading_bg.filters = [filter];
 
         let loading_bar = new Graphics();
         loading_bar.beginFill(0xffffff, 1);

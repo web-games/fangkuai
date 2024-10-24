@@ -21,18 +21,14 @@ export default class EndScene extends Scene {
         againButton.x = this.stageWidth / 2;
         againButton.y = this.stageHeight / 2;
         againButton.interactive = true;
-        againButton.on('click', () => {
-            this.emit(EndScene.CLICK_AGAIN)
-        });
+        againButton.on('pointerdown', () => this.emit(EndScene.CLICK_AGAIN));
         this.addChild(againButton);
 
         const restartButton = new Button('重新开始');
         restartButton.x = this.stageWidth / 2;
         restartButton.y = this.stageHeight / 2 + 110;
         restartButton.interactive = true;
-        restartButton.on('click', () => {
-            this.emit(EndScene.CLICK_RESTART)
-        });
+        restartButton.on('pointerdown', () => this.emit(EndScene.CLICK_RESTART));
         this.addChild(restartButton);
     }
 }
