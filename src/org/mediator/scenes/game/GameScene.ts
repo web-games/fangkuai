@@ -35,7 +35,7 @@ export default class GameScene extends Scene {
 
         this.gameContainer = new Container();
         this.gameContainer.x = (this.stageWidth - MapConfig.cols * MapConfig.gridWidth) / 2
-        this.gameContainer.y = 100;
+        this.gameContainer.y = 50;
         this.addChild(this.gameContainer)
 
         this.map = new Map();
@@ -43,7 +43,7 @@ export default class GameScene extends Scene {
 
         this.rocker = new Rocker();
         this.rocker.x = 40;
-        this.rocker.y = this.stageHeight - 100;
+        this.rocker.y = this.stageHeight - 50;
         this.addChild(this.rocker);
 
         this.randomBlock();
