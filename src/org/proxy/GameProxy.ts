@@ -1,6 +1,6 @@
 import Proxy = puremvc.Proxy;
 import IProxy = puremvc.IProxy;
-import Game from '../Game';
+import Game from '../Application';
 
 
 export default class GameProxy extends Proxy implements IProxy {

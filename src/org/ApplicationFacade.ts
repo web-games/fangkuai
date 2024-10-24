@@ -1,7 +1,7 @@
 import Facade = puremvc.Facade;
 import IFacade = puremvc.IFacade;
 
-import Game from "./Game";
+import Application from "./Application";
 import SceneCommand from "./command/SceneCommand";
 import StartupCommand from "./command/startup/StartupCommand";
 
@@ -11,7 +11,7 @@ export default class ApplicationFacade extends Facade implements IFacade {
 
     public static instance = null
 
-    private _game: Game = null
+    private _application: Application = null
 
     constructor(key) {
         super(key)
@@ -51,32 +51,32 @@ export default class ApplicationFacade extends Facade implements IFacade {
             ? windowHeight / windowWidth * stageWidth
             : windowWidth / windowHeight * stageWidth;
 
-        globalThis.__PIXI_APP__ = this.game = new Game({
+        globalThis.__PIXI_APP__ = this.application = new Application({
             width: stageWidth,
             height: stageHeight,
             backgroundColor: 0x1099bb
         })
 
-        this.sendNotification(ApplicationFacade.STARTUP, this.game)
+        this.sendNotification(ApplicationFacade.STARTUP, this.application)
         this.removeCommand(ApplicationFacade.STARTUP)
 
         this.sendNotification(SceneCommand.TO_LOADING, {from: null})
     }
 
     public destroy() {
-        if (this.game) {
-            this.game.destroy(true)
-            this.game = null
+        if (this.application) {
+            this.application.destroy(true)
+            this.application = null
         }
 
         window.TweenMax.killAll()
     }
 
-    public set game(value) {
-        this._game = value;
+    public set application(value) {
+        this._application = value;
     }
 
-    public get game() {
-        return this._game;
+    public get application() {
+        return this._application;
     }
 }

@@ -1,4 +1,4 @@
-import Game from '../../Game'
+import Game from '../../Application'
 
 export default interface IScene {
   game: Game;

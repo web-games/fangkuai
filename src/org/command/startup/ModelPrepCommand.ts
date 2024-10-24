@@ -1,6 +1,6 @@
 import SimpleCommand = puremvc.SimpleCommand;
 import GameProxy from '../../proxy/GameProxy'
-import Game from '../../Game'
+import Game from '../../Application'
 import INotification = puremvc.INotification
 
 export default class ModelPrepCommand extends SimpleCommand {

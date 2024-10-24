@@ -1,5 +1,5 @@
 import Container = PIXI.Container
-import Game from '../../Game';
+import Game from '../../Application';
 import IScene from './IScene'
 
 export const enum SceneEvent {

@@ -2,7 +2,7 @@ import SimpleCommand = puremvc.SimpleCommand
 import ICommand = puremvc.ICommand
 import INotification = puremvc.INotification
 
-import Game from '../Game';
+import Game from '../Application';
 import Scene from '../mediator/scenes/Scene';
 import ApplicationFacade from '../ApplicationFacade';
 
@@ -38,7 +38,7 @@ export default class SceneCommand extends SimpleCommand implements ICommand {
     public execute(notification: INotification) {
         console.log('SceneCommand notification:', notification)
 
-        let game: Game = (this.facade as ApplicationFacade).game;
+        let game: Game = (this.facade as ApplicationFacade).application;
         let name = notification.getName()
         let body = notification.getBody()
         let {from} = body
