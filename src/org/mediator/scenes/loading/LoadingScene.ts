@@ -16,42 +16,62 @@ export default class LoadingScene extends Scene {
     }
 
     public init() {
-        this.addChild(Sprite.from('./resources/images/sp_start_background.jpg'))
+        const screen_bg = new Graphics()
+        screen_bg.beginFill(0x327bfb);
+        screen_bg.drawRect(0, 0, this.stageWidth, this.stageHeight)
+        screen_bg.endFill();
+        screen_bg.x = 0;
+        screen_bg.y = 0;
+        this.addChild(screen_bg)
 
-        let container = new Container();
-        this.addChild(container);
-        container.x = (this.stageWidth - 300) / 2;
-        container.y = (this.stageHeight - 300);
+        let loading_bar_container = new Container();
+        this.addChild(loading_bar_container);
+        loading_bar_container.x = (this.stageWidth - 300) / 2;
+        loading_bar_container.y = (this.stageHeight - 300);
 
-        let loading_bg = Sprite.from('./resources/images/loading_bar_bg.png')
-        container.addChild(loading_bg)
+        const bar_width = 300;
+        const bar_height = 16;
+        const bar_radius = 8;
 
-        let loading_mask = new Graphics();
-        loading_mask.beginFill(0xff0000, 1);
-        loading_mask.drawRoundedRect(0, 0, 300, 53, 30);
-        loading_mask.endFill();
-        container.addChild(loading_mask)
+        let loading_bg = new Graphics();
+        loading_bg.lineStyle(2, 0xff0000, 1);
+        loading_bg.beginFill(0x327bfb, 0);
+        loading_bg.drawRoundedRect(0, 0, bar_width, bar_height, bar_radius)
+        loading_bg.endFill();
+        loading_bar_container.addChild(loading_bg)
 
-        let loading = Sprite.from('./resources/images/loading_bar.png')
-        container.addChild(loading)
-        loading.anchor.set(1, 0)
-        // loading.x = 100;
-        loading.y = 0;
-        loading.mask = loading_mask;
-        this._loading = loading;
+        loading_bg.filters = [new PIXI.filters['OutlineFilter'](2, 0x99ff99)];
+
+        let loading_bar = new Graphics();
+        loading_bar.beginFill(0xffffff, 1);
+        loading_bar.drawRect(0, 0, bar_width, bar_height);
+        loading_bar.endFill();
+        loading_bar_container.addChild(loading_bar)
+        loading_bar.x = 0 - bar_width;
+        loading_bar.y = 0;
+
+        let loading_bar_mask = new Graphics();
+        loading_bar_mask.beginFill(0xff0000, 1);
+        loading_bar_mask.drawRoundedRect(0, 0, bar_width, bar_height, bar_radius);
+        loading_bar_mask.endFill();
+        loading_bar_container.addChild(loading_bar_mask)
+
+
+        loading_bar.mask = loading_bar_mask;
+        this._loading = loading_bar;
 
         let text = new Text('加载中...', {fill: '#FFFFFF'});
-        this.addChild(text);
+        loading_bar_container.addChild(text);
         text.anchor.set(0.5, 0.5);
-        text.x = this.stageWidth / 2;
-        text.y = this.stageHeight - 300 - 30;
+        text.x = bar_width / 2;
+        text.y = -30;
         this._text = text;
 
         this.emit(SceneEvent.INIT_COMPLETE)
     }
 
     public setProgress(num) {
-        window.TweenMax.to(this._loading, 0.3, {x: num / 100 * 300})
+        window.TweenMax.to(this._loading, 0.3, {x: (num / 100 * 300) - 300})
 
         this._text.text = `${parseInt(num)}%`;
     }

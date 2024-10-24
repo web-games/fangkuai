@@ -1,7 +1,5 @@
 import Container = PIXI.Container
-import Graphics = PIXI.Graphics
 import Sprite = PIXI.Sprite
-import Text = PIXI.Text
 
 import Scene from '../Scene';
 import GameProxy from '../../../proxy/GameProxy'
@@ -14,11 +12,17 @@ import Map from "./Map";
 export default class GameScene extends Scene {
 
     public static NAME = 'game_scene';
-
-    private gameContainer = null;
+    public static CLICK_LEFT: string = 'click_left'
+    public static CLICK_RIGHT: string = 'click_right'
+    public static CLICK_UP: string = 'click_up'
+    public static CLICK_DOWN: string = 'click_down'
 
     public map: Map = null;
     public block: Block = null;
+    public rocker: Rocker = null;
+
+    private gameContainer = null;
+
 
     constructor(game) {
         super(game)
@@ -36,6 +40,11 @@ export default class GameScene extends Scene {
 
         this.map = new Map();
         this.gameContainer.addChild(this.map);
+
+        this.rocker = new Rocker();
+        this.rocker.x = 0;
+        this.rocker.y = this.stageHeight - 100;
+        this.addChild(this.rocker);
 
         this.randomBlock();
     }

@@ -15,9 +15,6 @@ export default class LoadSceneMediator extends Mediator implements IMediator {
     private initComplete() {
         var assetLoader = new PIXI['Loader']();
         assetLoader.add([
-            './resources/images/loading_bar.png',
-            './resources/images/loading_bar_bg.png',
-            './resources/images/sp_button_background.png',
             './resources/images/sp_start_background.jpg',
             './resources/images/sp_end_background.jpg',
             './resources/images/sp_game_background.jpg',

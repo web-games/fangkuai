@@ -1,5 +1,5 @@
 import Scene from '../Scene';
-import Button from '../../common/Button'
+import Button from '../../components/Button'
 import Sprite = PIXI.Sprite
 
 export default class EndScene extends Scene {

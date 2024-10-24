@@ -2,17 +2,20 @@ import Mediator = puremvc.Mediator;
 import IMediator = puremvc.IMediator;
 import INotification = puremvc.INotification;
 import GameScene from './scenes/game/GameScene';
-import GameProxy from '../proxy/GameProxy';
-import {SceneEvent} from './scenes/Scene'
 import GameCommand from '../command/GameCommand'
-import Game from "../Game";
 import {MapConfig} from "./scenes/game/MapConfig";
 
 export default class GameSceneMediator extends Mediator implements IMediator {
     public static NAME: string = 'game_scene_mediator'
 
+
     constructor(viewComponent: any) {
         super(GameSceneMediator.NAME, viewComponent)
+
+        this.gameScene.on(GameScene.CLICK_LEFT, () => this.sendNotification(GameCommand.BLOCK_MOVE_LEFT));
+        this.gameScene.on(GameScene.CLICK_RIGHT, () => this.sendNotification(GameCommand.BLOCK_MOVE_RIGHT));
+        this.gameScene.on(GameScene.CLICK_UP, () => this.sendNotification(GameCommand.BLOCK_ROTATE));
+        this.gameScene.on(GameScene.CLICK_DOWN, () => this.sendNotification(GameCommand.BLOCK_MOVE_END));
     }
 
     public listNotificationInterests(): string[] {
@@ -41,7 +44,6 @@ export default class GameSceneMediator extends Mediator implements IMediator {
                 this.checkScore();
 
                 this.checkOver();
-
                 break;
             case GameCommand.BLOCK_MOVE_LEFT:
                 this.gameScene.block.moveLeft();
