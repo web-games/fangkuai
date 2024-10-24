@@ -2,18 +2,25 @@
 
 [点击这里玩游戏](https://web-games.github.io/fangkuai/dist/index.html)
 
-## 技术栈：PureMVC + PIXI + GreenSock + Webpack + TypeScript
+## 技术栈：TypeScript + PureMVC + PIXI + GreenSock + Webpack + TexturePacker
 
-[PureMVC](https://github.com/PureMVC)  
+[TypeScript](https://www.tslang.cn/)
+
+[PureMVC](https://github.com/PureMVC)
+
 [PureMVC API](http://puremvc.org/pages/docs/JS/native-multicore/#!/api/puremvc.SimpleCommand)
 
-[PIXI](https://pixijs.io/)  
-[PIXI-Sound](https://github.com/pixijs/sound)   
-[PIXI-Filters](https://github.com/pixijs/filters)  
+[PIXI](https://pixijs.io/)
 
-[GreenSock](https://greensock.com/)   
+[PIXI-Sound](https://github.com/pixijs/sound)
+
+[PIXI-Filters](https://github.com/pixijs/filters)
+
+[GreenSock](https://greensock.com/)
+
 [GreenSock Docs](https://greensock.com/docs/)
 
 [Webpack](https://webpack.docschina.org/concepts/)
 
-[TypeScript](https://www.tslang.cn/)
+[TexturePacker](https://www.codeandweb.com/texturepacker)
+
