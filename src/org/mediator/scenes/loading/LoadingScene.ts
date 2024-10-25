@@ -7,9 +7,13 @@ import Graphics = PIXI.Graphics
 export default class LoadingScene extends Scene {
     public static NAME = 'loading_scene'
 
-    private _text = null;
+    public static CLICK_CONTINUE = 'click_continue'
 
-    private _loading = null;
+    public loading: boolean = true;
+
+    private _loadingText = null;
+
+    private _loadingBar = null;
 
     constructor(game) {
         super(game)
@@ -23,6 +27,10 @@ export default class LoadingScene extends Scene {
         screen_bg.x = 0;
         screen_bg.y = 0;
         this.addChild(screen_bg)
+        screen_bg.interactive = true;
+        screen_bg.on('pointerdown', () => {
+            !this.loading && this.emit(LoadingScene.CLICK_CONTINUE);
+        })
 
         let loading_bar_container = new Container();
         this.addChild(loading_bar_container);
@@ -67,21 +75,25 @@ export default class LoadingScene extends Scene {
 
 
         loading_bar.mask = loading_bar_mask;
-        this._loading = loading_bar;
+        this._loadingBar = loading_bar;
 
         let text = new Text('加载中...', {fill: '#FFFFFF'});
         loading_bar_container.addChild(text);
         text.anchor.set(0.5, 0.5);
         text.x = bar_width / 2;
         text.y = -30;
-        this._text = text;
+        this._loadingText = text;
 
         this.emit(SceneEvent.INIT_COMPLETE)
     }
 
-    public setProgress(num) {
-        window.TweenMax.to(this._loading, 0.3, {x: (num / 100 * 300) - 300})
+    public setLoadingProgress(num) {
+        window.TweenMax.to(this._loadingBar, 0.3, {x: (num / 100 * 300) - 300})
 
-        this._text.text = `${parseInt(num)}%`;
+        this.setLoadingText(`${parseInt(num)}%`)
+    }
+
+    public setLoadingText(text) {
+        this._loadingText.text = text;
     }
 }

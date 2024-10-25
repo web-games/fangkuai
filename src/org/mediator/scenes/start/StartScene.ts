@@ -17,7 +17,7 @@ export default class StartScene extends Scene {
         var scene_bg = Sprite.from('./resources/images/sp_start_background.jpg')
         this.addChild(scene_bg);
 
-        var start_btn = new Button('开始');
+        var start_btn = new Button('开始游戏');
         start_btn.x = this.stageWidth / 2;
         start_btn.y = this.stageHeight / 2;
         start_btn.scale.x = start_btn.scale.y = 0;

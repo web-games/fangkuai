@@ -10,6 +10,13 @@ export default class LoadSceneMediator extends Mediator implements IMediator {
     constructor(viewComponent: any) {
         super(LoadSceneMediator.NAME, viewComponent)
         this.loadingScene.on(SceneEvent.INIT_COMPLETE, this.initComplete, this);
+        this.loadingScene.on(LoadingScene.CLICK_CONTINUE, () => {
+            this.sendNotification(SceneCommand.TO_START, {from: this.loadingScene});
+
+            // this.sendNotification(SceneCommand.TO_GAME, {from: this.loadingScene});
+
+            // this.sendNotification(SceneCommand.TO_END, {from: this.loadingScene})
+        }, this);
     }
 
     private initComplete() {
@@ -20,16 +27,13 @@ export default class LoadSceneMediator extends Mediator implements IMediator {
             './resources/images/sp_game_background.jpg',
         ]);
         assetLoader.once('complete', () => {
-            this.sendNotification(SceneCommand.TO_START, {from: this.loadingScene});
+            this.loadingScene.setLoadingText('加载完成，点击任意地方继续')
 
-            // this.sendNotification(SceneCommand.TO_GAME, {from: this.loadingScene});
-
-            // this.sendNotification(SceneCommand.TO_END, {from: this.loadingScene})
+            this.loadingScene.loading = false;
         });
         assetLoader.on('progress', (e) => {
-            console.log('加载百分比' + e.progress + '%');
-
-            this.loadingScene.setProgress(e.progress);
+            // console.log('加载百分比' + e.progress + '%');
+            this.loadingScene.setLoadingProgress(e.progress);
         });
         assetLoader.load();
 
