@@ -69,7 +69,7 @@ export default class ApplicationFacade extends Facade implements IFacade {
             this.application = null
         }
 
-        window.TweenMax.killAll()
+        TweenMax.killAll()
     }
 
     public set application(value) {

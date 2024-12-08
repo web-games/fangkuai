@@ -1,21 +1,19 @@
-// 声明TweenMax的全局属性
-interface Window {
-    TweenMax: any;
-    Power0: any;
-    Power1: any;
-    Power2: any;
-    Power3: any;
-    Power4: any;
-    Sine: any;
-    Linear: any;
-    Elastic: any;
-    Strong: any;
-}
-
-// 声明jQuery
 declare const $: any;
+declare const TweenMax: any;
+declare const Power0: any;
+declare const Power1: any;
+declare const Power2: any;
+declare const Power3: any;
+declare const Power4: any;
+declare const Sine: any;
+declare const Linear: any;
+declare const Elastic: any;
+declare const Strong: any;
 
-// 声明PIXI.sound插件
 declare namespace PIXI {
     const sound: any;
+}
+
+interface Window {
+    themeColor: any;
 }
